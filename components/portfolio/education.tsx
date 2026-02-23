@@ -29,7 +29,7 @@ const galleryImages = [
     caption: "My favourite libary on campus",
   },
   {
-    src: "/images/gallery/uni4.jpeg",
+    src: "/images/gallery/uni5.jpeg",
     alt: "Graduation ceremony celebration",
     caption: "Graduation Day",
   },

@@ -15,7 +15,7 @@ export function About() {
           {/* Image */}
           <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
             <Image
-              src={`${base}/images/about.jpg`}
+              src={`${base}/images/gallery/about.png`}
               alt="Warm workspace with books and coffee"
               fill
               className="object-cover"

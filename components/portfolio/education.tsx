@@ -1,4 +1,7 @@
 import { GraduationCap } from "lucide-react";
+import useEmblaCarousel, {
+  type UseEmblaCarouselType,
+} from "embla-carousel-react";
 
 const galleryImages = [
   {

@@ -46,27 +46,6 @@ export function About() {
                 connecting with people from all walks of life.
               </p>
             </div>
-
-            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-10">
-              <div>
-                <p className="font-serif text-3xl text-foreground">3+</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Years of Experience
-                </p>
-              </div>
-              <div>
-                <p className="font-serif text-3xl text-foreground">5+</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Volunteer Projects
-                </p>
-              </div>
-              <div>
-                <p className="font-serif text-3xl text-foreground">2</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Research Papers
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

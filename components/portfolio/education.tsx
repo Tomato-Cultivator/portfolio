@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
@@ -141,6 +143,7 @@ function EducationGallery() {
     </div>
   );
 }
+
 const educationData = [
   {
     degree: "Master of Data Science",
@@ -154,6 +157,7 @@ const educationData = [
       "Data Wrangling",
       "Data Processing for Big Data",
     ],
+    hasGallery: true,
   },
   {
     degree: "Bachelor of Engineering in Computer Engineering",
@@ -172,6 +176,7 @@ const educationData = [
       "Computer Architecture",
       "Operating Systems",
     ],
+    hasGallery: false,
   },
   {
     degree: "High School Diploma",
@@ -180,6 +185,7 @@ const educationData = [
     description:
       "Excelled in STEM subjects with a strong focus on mathematics, physics, and chemistry.",
     coursework: ["Advanced Mathematics", "Physics", "English"],
+    hasGallery: false,
   },
 ];
 
@@ -235,6 +241,8 @@ export function Education() {
                   </span>
                 ))}
               </div>
+
+              {item.hasGallery && <EducationGallery />}
             </div>
           ))}
         </div>

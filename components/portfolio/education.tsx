@@ -1,5 +1,141 @@
 import { GraduationCap } from "lucide-react";
 
+const galleryImages = [
+  {
+    src: "/images/gallery/uni1.jpeg",
+    alt: "International Student Orientation",
+    caption: "First Day at Monash",
+  },
+  {
+    src: "/images/gallery/uni2.jpeg",
+    alt: "Class",
+    caption: "When I can't see what on the screen the tutor was showing",
+  },
+  {
+    src: "/images/gallery/uni3.jpeg",
+    alt: "Class",
+    caption: "The week when people still come to class",
+  },
+  {
+    src: "/images/gallery/uni4.jpeg",
+    alt: "Creative workspace with coffee and notebook",
+    caption: "My favourite libary on campus",
+  },
+  {
+    src: "/images/gallery/uni4.jpeg",
+    alt: "Graduation ceremony celebration",
+    caption: "Graduation Day",
+  },
+];
+
+function EducationGallery() {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      slidesToScroll: 1,
+    },
+    [
+      Autoplay({
+        delay: 4000,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ]
+  );
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  return (
+    <div className="mt-8">
+      {/* Header row with label and arrows */}
+      <div className="mb-4 flex items-center justify-between">
+        <p className="text-sm font-medium text-muted-foreground">
+          Moments & Memories
+        </p>
+        <div className="flex gap-2">
+          <button
+            onClick={scrollPrev}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            aria-label="Previous slide"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            aria-label="Next slide"
+          >
+            <ArrowRight className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Carousel */}
+      <div ref={emblaRef} className="overflow-hidden rounded-lg">
+        <div className="flex gap-3">
+          {galleryImages.map((image, index) => (
+            <div
+              key={index}
+              className="relative min-w-0 shrink-0 grow-0 basis-[70%] md:basis-[45%] lg:basis-[32%]"
+            >
+              <div className="group relative aspect-[4/3] overflow-hidden rounded-lg">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Overlay with caption */}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <p className="text-xs font-medium text-background">
+                    {image.caption}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="mt-4 flex items-center justify-center gap-1.5">
+        {galleryImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => emblaApi?.scrollTo(index)}
+            className={cn(
+              "h-1.5 rounded-full transition-all duration-300",
+              selectedIndex === index
+                ? "w-6 bg-accent"
+                : "w-1.5 bg-border hover:bg-muted-foreground/40"
+            )}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 const educationData = [
   {
     degree: "Master of Data Science",

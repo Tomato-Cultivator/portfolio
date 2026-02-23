@@ -1,4 +1,5 @@
 import Image from "next/image";
+const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function Hero() {
   return (
@@ -6,7 +7,7 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero.jpg"
+          src={`${base}/images/hero.jpg`}
           alt="Warm architectural photography"
           fill
           className="object-cover"

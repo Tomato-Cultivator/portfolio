@@ -1,4 +1,5 @@
 import Image from "next/image";
+const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function About() {
   return (
@@ -14,7 +15,7 @@ export function About() {
           {/* Image */}
           <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
             <Image
-              src="/images/about.jpg"
+              src={`${base}/images/about.jpg`}
               alt="Warm workspace with books and coffee"
               fill
               className="object-cover"

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -9,16 +9,20 @@ const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Volunteer", href: "#volunteer" },
   { label: "Research", href: "#research" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
-]
+];
 
 export function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="font-serif text-xl tracking-tight text-foreground">
+        <a
+          href="#"
+          className="font-serif text-xl tracking-tight text-foreground"
+        >
           Portfolio
         </a>
 
@@ -65,5 +69,5 @@ export function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }

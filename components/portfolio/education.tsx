@@ -9,34 +9,29 @@ import { cn } from "@/lib/utils";
 
 const galleryImages = [
   {
-    src: "/images/gallery/gallery-1.jpg",
-    alt: "Studying at the university library",
-    caption: "University Life",
+    src: "/images/gallery/uni1.jpeg",
+    alt: "International Student Orientation",
+    caption: "First Day at Monash",
   },
   {
-    src: "/images/gallery/gallery-2.jpg",
-    alt: "Melbourne city skyline at golden hour",
-    caption: "Melbourne, Australia",
+    src: "/images/gallery/uni2.jpeg",
+    alt: "Class",
+    caption: "When I can't see what on the screen the tutor was showing",
   },
   {
-    src: "/images/gallery/gallery-3.jpg",
-    alt: "Volunteering with the community",
-    caption: "Community Work",
+    src: "/images/gallery/uni3.jpeg",
+    alt: "Class",
+    caption: "The week when people still come to class",
   },
   {
-    src: "/images/gallery/gallery-4.jpg",
+    src: "/images/gallery/uni4.jpeg",
     alt: "Creative workspace with coffee and notebook",
-    caption: "Daily Moments",
+    caption: "My favourite libary on campus",
   },
   {
-    src: "/images/gallery/gallery-5.jpg",
+    src: "/images/gallery/uni5.jpeg",
     alt: "Graduation ceremony celebration",
     caption: "Graduation Day",
-  },
-  {
-    src: "/images/gallery/gallery-6.jpg",
-    alt: "Hiking on a scenic nature trail",
-    caption: "Adventures",
   },
 ];
 

@@ -1,6 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, Code2, Construction } from "lucide-react";
+import { Code2, Construction } from "lucide-react";
 
 const projects = [
   {
@@ -8,9 +6,9 @@ const projects = [
     description:
       "A full-stack takeaway ordering platform for restaurants, featuring a customer-facing menu and ordering interface alongside a management dashboard. Built with a modern web stack combining Next.js and React on the frontend with a Django REST backend.",
     tags: ["Next.js", "React", "Django", "REST API", "Full Stack"],
-    image: "/images/projects/takeaway-app.jpg",
     href: "/projects/takeaway-app",
     status: "In Progress",
+    icon: Construction,
   },
   {
     title: "Melbourne Property Development & Price Analysis",
@@ -23,15 +21,15 @@ const projects = [
       "Data Visualisation",
       "Time-Series Analysis",
     ],
-    image: "/images/projects/melbourne-property.jpg",
     href: "/projects/melbourne-property",
     status: "Completed",
+    icon: Code2,
   },
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 md:py-32">
+    <section id="projects" className="bg-secondary py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16">
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
@@ -42,72 +40,51 @@ export function Projects() {
           </h2>
         </div>
 
-        <div className="space-y-10">
-          {projects.map((project, index) => (
-            <Link
-              key={index}
-              href={project.href}
-              className="group block rounded-lg border border-border bg-card transition-shadow hover:shadow-lg"
-            >
-              <div className="flex flex-col lg:flex-row">
-                {/* Image */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-lg lg:aspect-auto lg:w-2/5 lg:rounded-l-lg lg:rounded-tr-none">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* Status badge */}
-                  <div className="absolute left-4 top-4">
+        <div className="grid gap-6 md:grid-cols-2">
+          {projects.map((project, index) => {
+            const Icon = project.icon;
+            return (
+              <div
+                key={index}
+                className="flex flex-col rounded-lg border border-border bg-card p-8"
+              >
+                <div className="flex items-start gap-5">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary">
+                    <Icon className="h-5 w-5 text-accent" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-xl text-foreground text-balance">
+                      {project.title}
+                    </h3>
                     <span
-                      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium backdrop-blur-sm ${
+                      className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${
                         project.status === "In Progress"
-                          ? "bg-accent/90 text-accent-foreground"
-                          : "bg-card/90 text-foreground"
+                          ? "bg-accent/20 text-accent"
+                          : "bg-secondary text-muted-foreground"
                       }`}
                     >
-                      {project.status === "In Progress" ? (
-                        <Construction className="h-3 w-3" />
-                      ) : (
-                        <Code2 className="h-3 w-3" />
-                      )}
                       {project.status}
                     </span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-1 flex-col justify-between p-8 md:p-10">
-                  <div>
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="font-serif text-xl leading-snug text-foreground md:text-2xl text-balance">
-                        {project.title}
-                      </h3>
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors group-hover:border-accent group-hover:text-accent">
-                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                      </div>
-                    </div>
+                <p className="mt-5 flex-1 text-base leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
 
-                    <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-4">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

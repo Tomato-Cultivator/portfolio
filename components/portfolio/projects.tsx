@@ -7,7 +7,7 @@ const projects = [{
         description: "A full-stack takeaway ordering platform for restaurants, featuring a customer-facing menu and ordering interface alongside a management dashboard. Built with a modern web stack combining Next.js and React on the frontend with a Django REST backend.",
         tags: ["Next.js", "React", "Django", "REST API", "Full Stack"],
         image: "/images/projects/takeaway-app.jpg",
-        href: "/projects/takeaway-app",
+        // href: "/projects/takeaway-app",
         status: "In Progress",
     },
     {
@@ -15,8 +15,8 @@ const projects = [{
         description: "Analysed development activity within the City of Melbourne to examine how new construction influences property price trends over time. Built clear visualisations to highlight temporal and spatial patterns, enabling data-driven insights into urban growth and housing market dynamics.",
         tags: ["Python", "Pandas", "Matplotlib", "Data Visualisation", "Time-Series Analysis"],
         image: "/images/projects/melbourne-property.jpg",
-        href: "/projects/melbourne-property",
-        status: "Completed",
+        // href: "/projects/melbourne-property",
+        status: "In Progress",
     },
 ]
 

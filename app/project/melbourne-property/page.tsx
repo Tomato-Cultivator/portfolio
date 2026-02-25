@@ -1,20 +1,20 @@
-// import Image from "next/image";
-// import Link from "next/link";
-// import { ArrowLeft, ExternalLink, Code2 } from "lucide-react";
-// import type { Metadata } from "next";
-// import {
-//   PriceTrendChart,
-//   SuburbComparisonChart,
-//   DevelopmentTypeChart,
-//   TransactionVolumeChart,
-//   SuburbTable,
-// } from "@/components/projects/melbourne-charts";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink, Code2 } from "lucide-react";
+import type { Metadata } from "next";
+import {
+  PriceTrendChart,
+  SuburbComparisonChart,
+  DevelopmentTypeChart,
+  TransactionVolumeChart,
+  SuburbTable,
+} from "@/components/projects/melbourne-charts";
 
-// export const metadata: Metadata = {
-//   title: "Melbourne Property Development & Price Analysis | Portfolio",
-//   description:
-//     "Analysis of development activity within the City of Melbourne examining how new construction influences property price trends.",
-// };
+export const metadata: Metadata = {
+  title: "Melbourne Property Development & Price Analysis | Portfolio",
+  description:
+    "Analysis of development activity within the City of Melbourne examining how new construction influences property price trends.",
+};
 
 // const methodology = [
 //   {

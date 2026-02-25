@@ -1,13 +1,13 @@
-// import Image from "next/image";
-// import Link from "next/link";
-// import { ArrowLeft, Construction, Github, ExternalLink } from "lucide-react";
-// import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, Construction, Github, ExternalLink } from "lucide-react";
+import type { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "Restaurant Takeaway App | Portfolio",
-//   description:
-//     "A full-stack takeaway ordering platform for restaurants built with Next.js, React, and Django.",
-// };
+export const metadata: Metadata = {
+  title: "Restaurant Takeaway App | Portfolio",
+  description:
+    "A full-stack takeaway ordering platform for restaurants built with Next.js, React, and Django.",
+};
 
 // const techStack = [
 //   { name: "Next.js", category: "Frontend" },

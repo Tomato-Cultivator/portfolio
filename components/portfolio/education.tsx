@@ -9,29 +9,34 @@ import { cn } from "@/lib/utils";
 
 const galleryImages = [
   {
-    src: "/images/gallery/uni1.jpeg",
-    alt: "International Student Orientation",
-    caption: "First Day at Monash",
+    src: "/images/gallery/gallery-1.jpg",
+    alt: "Studying at the university library",
+    caption: "University Life",
   },
   {
-    src: "/images/gallery/uni2.jpeg",
-    alt: "Class",
-    caption: "When I can't see what on the screen the tutor was showing",
+    src: "/images/gallery/gallery-2.jpg",
+    alt: "Melbourne city skyline at golden hour",
+    caption: "Melbourne, Australia",
   },
   {
-    src: "/images/gallery/uni3.jpeg",
-    alt: "Class",
-    caption: "The week when people still come to class",
+    src: "/images/gallery/gallery-3.jpg",
+    alt: "Volunteering with the community",
+    caption: "Community Work",
   },
   {
-    src: "/images/gallery/uni4.jpeg",
+    src: "/images/gallery/gallery-4.jpg",
     alt: "Creative workspace with coffee and notebook",
-    caption: "My favourite libary on campus",
+    caption: "Daily Moments",
   },
   {
-    src: "/images/gallery/uni5.jpeg",
+    src: "/images/gallery/gallery-5.jpg",
     alt: "Graduation ceremony celebration",
     caption: "Graduation Day",
+  },
+  {
+    src: "/images/gallery/gallery-6.jpg",
+    alt: "Hiking on a scenic nature trail",
+    caption: "Adventures",
   },
 ];
 
@@ -98,11 +103,11 @@ function EducationGallery() {
 
       {/* Carousel */}
       <div ref={emblaRef} className="overflow-hidden rounded-lg">
-        <div className="flex gap-3">
+        <div className="-ml-3 flex">
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="relative min-w-0 shrink-0 grow-0 basis-[70%] md:basis-[45%] lg:basis-[32%]"
+              className="relative min-w-0 shrink-0 grow-0 basis-[70%] pl-3 md:basis-[45%] lg:basis-[32%]"
             >
               <div className="group relative aspect-[4/3] overflow-hidden rounded-lg">
                 <Image

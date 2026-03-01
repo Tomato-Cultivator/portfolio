@@ -7,7 +7,13 @@ import Autoplay from "embla-carousel-autoplay";
 import { GraduationCap, ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const galleryImages = [
+type GalleryImage = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
+const masterGalleryImages: GalleryImage[] = [
   {
     src: "/images/gallery/uni1.jpeg",
     alt: "International Student Orientation",
@@ -35,7 +41,64 @@ const galleryImages = [
   },
 ];
 
-function EducationGallery() {
+const bachelorGalleryImages: GalleryImage[] = [
+  {
+    src: "/images/gallery/bach-1.jpeg",
+    alt: "Graduation",
+    caption: "My final project team ``Boknoi`` & our cool supervisor",
+  },
+  {
+    src: "/images/gallery/bach-3.jpeg",
+    alt: "Graduation",
+    caption: "Friends who carried me for 4 years",
+  },
+  {
+    src: "/images/gallery/bach-2.jpeg",
+    alt: "Hardware lab work",
+    caption: "Embedded System Unit... new week new task",
+  },
+  {
+    src: "/images/gallery/bach-4.jpeg",
+    alt: "International Atmosphere at KMUTT competition",
+    caption:
+      "Best Creative Project & 2nd Runner-up, Promoting  International Atmosphere at KMUTT competition",
+  },
+  {
+    src: "/images/gallery/bach-5.jpeg",
+    alt: "3K Engineering",
+    caption: "3K Engineering",
+  },
+];
+
+const schoolGalleryImages: GalleryImage[] = [
+  {
+    src: "/images/gallery/school1.jpeg",
+    alt: "School campus",
+    caption: "Where it all started",
+  },
+  {
+    src: "/images/gallery/school2.jpeg",
+    alt: "Sports day",
+    caption: "Sports day memories",
+  },
+  {
+    src: "/images/gallery/school3.jpeg",
+    alt: "Exam time",
+    caption: "The exam grind",
+  },
+  {
+    src: "/images/gallery/school4.jpeg",
+    alt: "School festival",
+    caption: "School festival performance",
+  },
+  {
+    src: "/images/gallery/school5.jpeg",
+    alt: "Last day of school",
+    caption: "Last day with friends",
+  },
+];
+
+function EducationGallery({ images }: { images: GalleryImage[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -48,7 +111,7 @@ function EducationGallery() {
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
-    ]
+    ],
   );
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -99,7 +162,7 @@ function EducationGallery() {
       {/* Carousel */}
       <div ref={emblaRef} className="overflow-hidden rounded-lg">
         <div className="-ml-3 flex">
-          {galleryImages.map((image, index) => (
+          {images.map((image, index) => (
             <div
               key={index}
               className="relative min-w-0 shrink-0 grow-0 basis-[70%] pl-3 md:basis-[45%] lg:basis-[32%]"
@@ -113,7 +176,7 @@ function EducationGallery() {
                 />
                 {/* Overlay with caption */}
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   <p className="text-xs font-medium text-background">
                     {image.caption}
                   </p>
@@ -126,7 +189,7 @@ function EducationGallery() {
 
       {/* Dot indicators */}
       <div className="mt-4 flex items-center justify-center gap-1.5">
-        {galleryImages.map((_, index) => (
+        {images.map((_, index) => (
           <button
             key={index}
             onClick={() => emblaApi?.scrollTo(index)}
@@ -134,7 +197,7 @@ function EducationGallery() {
               "h-1.5 rounded-full transition-all duration-300",
               selectedIndex === index
                 ? "w-6 bg-accent"
-                : "w-1.5 bg-border hover:bg-muted-foreground/40"
+                : "w-1.5 bg-border hover:bg-muted-foreground/40",
             )}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -157,7 +220,7 @@ const educationData = [
       "Data Wrangling",
       "Data Processing for Big Data",
     ],
-    hasGallery: true,
+    galleryImages: masterGalleryImages,
   },
   {
     degree: "Bachelor of Engineering in Computer Engineering",
@@ -176,7 +239,7 @@ const educationData = [
       "Computer Architecture",
       "Operating Systems",
     ],
-    hasGallery: false,
+    galleryImages: bachelorGalleryImages,
   },
   {
     degree: "High School Diploma",
@@ -185,7 +248,7 @@ const educationData = [
     description:
       "Excelled in STEM subjects with a strong focus on mathematics, physics, and chemistry.",
     coursework: ["Advanced Mathematics", "Physics", "English"],
-    hasGallery: false,
+    // galleryImages: schoolGalleryImages,
   },
 ];
 
@@ -242,7 +305,9 @@ export function Education() {
                 ))}
               </div>
 
-              {item.hasGallery && <EducationGallery />}
+              {item.galleryImages && item.galleryImages.length > 0 && (
+                <EducationGallery images={item.galleryImages} />
+              )}
             </div>
           ))}
         </div>

@@ -22,9 +22,7 @@ export function Navbar() {
         <a
           href="#"
           className="font-serif text-xl tracking-tight text-foreground"
-        >
-          Portfolio
-        </a>
+        ></a>
 
         {/* Desktop nav */}
         <ul className="hidden items-center gap-8 md:flex">

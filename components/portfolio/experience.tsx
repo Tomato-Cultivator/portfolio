@@ -27,11 +27,11 @@ const experienceData = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 md:py-32">
+    <section id="experience" className=" bg-secondary py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16">
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
-            03 &mdash; Experience
+            04 &mdash; Experience
           </p>
           <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-foreground md:text-5xl">
             Work

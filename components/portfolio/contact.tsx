@@ -27,7 +27,7 @@ export function Contact() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16">
           <p className="text-sm uppercase tracking-[0.3em] text-background/50">
-            06 &mdash; Contact
+            08 &mdash; Contact
           </p>
           <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-background md:text-5xl text-balance">
             {"Let's Connect"}

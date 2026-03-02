@@ -6,10 +6,10 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Education", href: "#education" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Experience", href: "#experience" },
   { label: "Volunteer", href: "#volunteer" },
   { label: "Research", href: "#research" },
-  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -22,7 +22,9 @@ export function Navbar() {
         <a
           href="#"
           className="font-serif text-xl tracking-tight text-foreground"
-        ></a>
+        >
+          Portfolio
+        </a>
 
         {/* Desktop nav */}
         <ul className="hidden items-center gap-8 md:flex">

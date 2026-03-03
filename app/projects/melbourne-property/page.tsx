@@ -2,44 +2,60 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Code2 } from "lucide-react";
 import type { Metadata } from "next";
-import {
-  PriceTrendChart,
-  SuburbComparisonChart,
-  DevelopmentTypeChart,
-  TransactionVolumeChart,
-  SuburbTable,
-} from "@/components/projects/melbourne-charts";
 
 export const metadata: Metadata = {
-  title: "Melbourne Property Development & Price Analysis | Portfolio",
+  title: "Melbourne Property Development vs Price Growth Analysis | Portfolio",
   description:
-    "Analysis of development activity within the City of Melbourne examining how new construction influences property price trends.",
+    "Power BI analysis investigating the relationship between property price growth and development intensity across City of Melbourne suburbs (2013-2023).",
 };
+
+const dashboardFeatures = [
+  {
+    title: "Scatter Plot: Development vs Price Growth",
+    description:
+      "X-axis shows Development Intensity, Y-axis shows Price Growth %. Colour-coded by growth bands with trendline displaying correlation value.",
+  },
+  {
+    title: "Development Type Comparison",
+    description:
+      "Interactive slicer enables comparison between Completed and Under Construction projects for scenario-based supply impact analysis.",
+  },
+  {
+    title: "Suburb Ranking",
+    description:
+      "Bar chart ranking suburbs by average price growth to identify top-performing areas like Parkville, East Melbourne, and South Yarra.",
+  },
+  {
+    title: "Geographic Growth Distribution",
+    description:
+      "Map visualisation showing spatial clustering of high, mid, and low growth suburbs across the City of Melbourne.",
+  },
+];
 
 const methodology = [
   {
     step: "01",
     title: "Data Collection",
     description:
-      "Sourced large public datasets from the City of Melbourne open data portal covering development permits, building completions, and property transaction records.",
+      "Sourced suburb-level median property prices (2013-2023), development project data (Completed & Under Construction), and geographic coordinates for spatial analysis.",
   },
   {
     step: "02",
-    title: "Cleaning & Standardisation",
+    title: "Key Metrics Creation",
     description:
-      "Addressed missing values, standardised address formats, and normalised date fields across multiple datasets to enable consistent merging and aggregation.",
+      "Calculated Price Growth % using (Price2023 - Price2013) / Price2013 x 100. Measured Development Intensity as distinct count of projects per suburb.",
   },
   {
     step: "03",
-    title: "Aggregation & Feature Engineering",
+    title: "Growth Band Classification",
     description:
-      "Aggregated development metrics by year and suburb. Engineered features such as development density, completion rates, and rolling price averages to capture temporal patterns.",
+      "Classified suburbs into High Growth (>70%), Mid Growth (50-70%), and Low Growth (<50%) bands for visual segmentation.",
   },
   {
     step: "04",
-    title: "Analysis & Visualisation",
+    title: "Dynamic DAX Measures",
     description:
-      "Compared completed and ongoing developments to property transaction trends. Built clear visualisations using Matplotlib to highlight temporal and spatial patterns in urban growth.",
+      "Built correlation measure between development intensity and price growth, allowing interactive filtering by development type.",
   },
 ];
 
@@ -70,48 +86,67 @@ export default function MelbournePropertyPage() {
             Personal Project
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-foreground md:text-6xl text-balance">
-            Melbourne Property Development & Price Analysis
+            Melbourne Property Development vs Price Growth Analysis
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Analysed development activity within the City of Melbourne to
-            examine how new construction influences property price trends over
-            time. Cleaned and standardised large public datasets, addressed
-            missing values, and aggregated development metrics by year and
-            suburb to identify patterns in supply growth.
+            This project investigates the relationship between property price
+            growth and development intensity across suburbs within the City of
+            Melbourne between 2013 and 2023. The objective was to determine
+            whether higher levels of residential development activity are
+            associated with stronger or weaker long-term price growth.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-2">
-            {[
-              "Python",
-              "Pandas",
-              "Matplotlib",
-              "Data Cleaning",
-              "Time-Series Analysis",
-              "EDA",
-              "Data Visualisation",
-            ].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
-              >
-                {tag}
-              </span>
-            ))}
+            {["Power BI", "DAX", "Data Modelling", "Data Visualisation"].map(
+              (tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                >
+                  {tag}
+                </span>
+              )
+            )}
           </div>
         </div>
       </section>
 
-      {/* Cover image */}
+      {/* Dashboard Screenshot */}
       <section className="pb-16 md:pb-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="relative aspect-[21/9] overflow-hidden rounded-lg border border-border">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-lg border border-border bg-card">
             <Image
-              src="/images/projects/melbourne-property.jpg"
-              alt="Melbourne property analysis visualisation overview"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g9pbQscloSpuBisnsgDWZvQcdoatan.png"
+              alt="Power BI Dashboard showing Melbourne Property Development vs Price Growth Analysis"
               fill
-              className="object-cover"
+              className="object-contain"
               priority
             />
+          </div>
+          <p className="mt-4 text-center text-sm text-muted-foreground">
+            Power BI Dashboard: Development vs Price Growth Analysis
+          </p>
+        </div>
+      </section>
+
+      {/* Business Question */}
+      <section className="pb-16 md:pb-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="rounded-lg border border-border bg-card p-8 md:p-10">
+            <h2 className="font-serif text-2xl text-foreground">
+              Business Question
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Does higher development intensity influence long-term property
+              price growth at the suburb level?
+            </p>
+            <ul className="mt-4 space-y-2 text-base text-muted-foreground">
+              <li>
+                - Do suburbs with more construction activity experience stronger
+                capital growth?
+              </li>
+              <li>- Or does increased supply moderate price growth?</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -125,53 +160,55 @@ export default function MelbournePropertyPage() {
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <div className="rounded-lg border border-border bg-card p-8">
               <p className="font-mono text-3xl font-medium text-accent">
-                1,370+
+                65.16%
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
-                Total developments completed across the City of Melbourne
-                between 2014-2023
-              </p>
-            </div>
-            <div className="rounded-lg border border-border bg-card p-8">
-              <p className="font-mono text-3xl font-medium text-accent">+49%</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Median property price growth over the decade, despite periods of
-                market correction
+                Average Price Growth across City of Melbourne suburbs
+                (2013-2023)
               </p>
             </div>
             <div className="rounded-lg border border-border bg-card p-8">
               <p className="font-mono text-3xl font-medium text-accent">
-                8 Suburbs
+                -0.60
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
-                Analysed across the inner city, revealing distinct development
-                and pricing patterns
+                Correlation between development intensity and price growth
+                (moderate negative)
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-8">
+              <p className="font-mono text-3xl font-medium text-accent">
+                3 Bands
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Growth classification: High ({">"}70%), Mid (50-70%), Low ({"<"}
+                50%)
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Visualisations */}
+      {/* Dashboard Features */}
       <section className="pb-16 md:pb-24">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="font-serif text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
-            Visualisations
+            Dashboard Features
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            Interactive charts exploring the relationship between development
-            activity and property price dynamics across Melbourne suburbs.
-          </p>
-
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            <PriceTrendChart />
-            <TransactionVolumeChart />
-            <SuburbComparisonChart />
-            <DevelopmentTypeChart />
-          </div>
-
-          <div className="mt-8">
-            <SuburbTable />
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {dashboardFeatures.map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-lg border border-border bg-card p-8"
+              >
+                <h3 className="font-serif text-lg text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -212,27 +249,18 @@ export default function MelbournePropertyPage() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                The analysis revealed a positive correlation between development
-                activity and median property prices across most inner-Melbourne
-                suburbs, though the relationship varied significantly by
-                location. Suburbs like Docklands and Southbank, which
-                experienced the highest volumes of new construction, showed more
-                moderate price growth compared to established suburbs like
-                Fitzroy and Carlton where supply remained constrained.
+                The analysis revealed a moderate negative correlation (-0.60)
+                between development intensity and long-term price growth. This
+                suggests that suburbs with higher development activity tended to
+                experience slower price growth, indicating that increased
+                housing supply may place downward pressure on capital
+                appreciation.
               </p>
               <p>
-                A notable finding was the 2018-2020 period, during which
-                elevated development completions coincided with a brief market
-                correction, suggesting that rapid supply increases may
-                temporarily dampen price growth. However, prices recovered
-                strongly post-2020, indicating that underlying demand in inner
-                Melbourne remains robust.
-              </p>
-              <p>
-                The project demonstrated that while construction activity is one
-                factor influencing prices, broader economic conditions, interest
-                rates, and population growth play equally important roles in
-                shaping Melbourne{"'"}s property market dynamics.
+                However, results should be interpreted cautiously due to the
+                limited number of suburbs analysed and potential confounding
+                urban factors such as amenities, transport infrastructure, and
+                demographic change.
               </p>
             </div>
           </div>

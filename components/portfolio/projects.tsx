@@ -1,4 +1,5 @@
 import { Code2, Construction } from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -15,11 +16,10 @@ const projects = [
     description:
       "Analysed development activity within the City of Melbourne to examine how new construction influences property price trends over time. Built clear visualisations to highlight temporal and spatial patterns, enabling data-driven insights into urban growth and housing market dynamics.",
     tags: [
-      "Python",
-      "Pandas",
-      "Matplotlib",
+      "Power BI",
+      "DAX",
+      "Data Modelling",
       "Data Visualisation",
-      "Time-Series Analysis",
     ],
     href: "/projects/melbourne-property",
     status: "Completed",
@@ -44,9 +44,10 @@ export function Projects() {
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
-              <div
+              <Link
                 key={index}
-                className="flex flex-col rounded-lg border border-border bg-card p-8"
+                href={project.href}
+                className="group flex flex-col rounded-lg border border-border bg-card p-8 transition-colors hover:border-accent/50 hover:bg-card/80"
               >
                 <div className="flex items-start gap-5">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary">
@@ -82,7 +83,7 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

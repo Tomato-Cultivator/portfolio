@@ -6,8 +6,11 @@ import { Award } from "lucide-react";
 const certifications = [
   {
     id: "0dcb0209-a774-49ec-87b2-5407bfeb7647",
-    name: "AWS Certification",
-    // Add more certifications here with their Credly badge IDs
+    name: "Google Data Analytics Certificate",
+  },
+  {
+    id: "02d9c25f-36dc-44fa-8679-9d5dd87b7bda",
+    name: "Coursera Certificate",
   },
 ];
 
@@ -22,7 +25,7 @@ export function Certifications() {
     return () => {
       // Cleanup script on unmount
       const existingScript = document.querySelector(
-        'script[src="//cdn.credly.com/assets/utilities/embed.js"]'
+        'script[src="//cdn.credly.com/assets/utilities/embed.js"]',
       );
       if (existingScript) {
         existingScript.remove();

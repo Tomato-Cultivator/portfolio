@@ -20,6 +20,15 @@ const projects = [
     status: "Completed",
     icon: Code2,
   },
+  {
+    title: "Australian Hospital Utilisation Dashboard",
+    description:
+      "Analysed Australian hospital utilisation data to investigate patient admissions, common diagnoses, and procedure patterns. Developed a Power BI dashboard to visualise healthcare trends and support data-driven insights into hospital service demand.",
+    tags: ["Power BI", "Healthcare Analytics", "Data Visualisation", "Excel"],
+    href: "/projects/hospital-dashboard",
+    status: "Completed",
+    icon: Code2,
+  },
 ];
 
 export function Projects() {

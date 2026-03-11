@@ -4,15 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Github, Calendar, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PDFViewerEmbed } from "@/components/pdf-viewer";
 
 const techStack = [
-  { name: "Python", category: "Data Processing" },
-  { name: "Pandas", category: "Data Processing" },
   { name: "Power BI", category: "Visualisation" },
-  { name: "DAX", category: "Visualisation" },
+  { name: "Excel", category: "Data Processing" },
+  { name: "DAX", category: "Formulas" },
+  { name: "Data Modelling", category: "Analysis" },
 ];
 
-export default function MelbournePropertyPage() {
+export default function HospitalDashboardPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
@@ -36,18 +37,32 @@ export default function MelbournePropertyPage() {
             <span>2026</span>
             <span className="text-border">|</span>
             <MapPin className="h-4 w-4" />
-            <span>Melbourne, Australia</span>
+            <span>Australia</span>
           </div>
 
           <h1 className="mt-6 font-serif text-4xl leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl text-balance">
-            Melbourne Property Development & Price Analysis
+            Australian Hospital Utilisation Dashboard
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A comprehensive data analysis project examining how urban
-            development activity influences property price trends across
-            Melbourne.
+            Analysed Australian hospital utilisation data to investigate patient
+            admissions, common diagnoses, and procedure patterns. Developed a
+            Power BI dashboard to visualise healthcare trends and support
+            data-driven insights into hospital service demand.
           </p>
+
+          {/* <div className="mt-8 flex flex-wrap gap-4">
+            <Button variant="outline" className="gap-2" asChild>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="h-4 w-4" />
+                View on GitHub
+              </a>
+            </Button>
+          </div> */}
 
           <span className="mt-6 inline-block rounded-full bg-secondary px-3 py-1 text-sm text-muted-foreground">
             Completed
@@ -55,18 +70,28 @@ export default function MelbournePropertyPage() {
         </div>
       </section>
 
-      {/* Project Image */}
+      {/* Project Image
       <section className="pb-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="relative aspect-video overflow-hidden rounded-lg border border-border bg-secondary">
             <Image
-              src="/images/development-city-of-melb.png"
-              alt="Melbourne Property Analysis"
+              src="/images/projects/hospital-dashboard.jpg"
+              alt="Australian Hospital Utilisation Dashboard"
               fill
-              className="object-contain"
+              className="object-cover"
               priority
             />
           </div>
+        </div>
+      </section> */}
+
+      {/* PDF Report Section */}
+      <section className="pb-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="font-serif text-3xl text-foreground mb-6">
+            Project Report
+          </h2>
+          <PDFViewerEmbed src="/documents/hospital-report.pdf" height="700px" />
         </div>
       </section>
 
@@ -81,37 +106,36 @@ export default function MelbournePropertyPage() {
               <div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   {/* Add your explanation here */}
-                  This project investigates the relationship between property
-                  price growth and development intensity across suburbs within
-                  the City of Melbourne between 2013 and 2023.
+                  This project analyses Australian hospital activity using
+                  national admitted patient care datasets. I cleaned and
+                  transformed multiple tables from the Australian Institute of
+                  Health and Welfare (AIHW) to prepare them for analysis in
+                  Power BI. The data included hospital separations, patient
+                  days, diagnoses, and procedures across public and private
+                  hospitals. I reshaped several datasets into a long format to
+                  enable easier visualisation and comparison. Key indicators
+                  such as separations per 1,000 population, patient days, and
+                  procedure frequency were used to explore patterns in
+                  healthcare utilisation.
                   <br />
                   <br />
-                  The objective was to determine whether higher levels of
-                  residential development activity are associated with stronger
-                  or weaker long-term price growth. This project explores the
-                  business question: Does higher development activity influence
-                  long-term property price growth in Melbourne suburbs?
+                  An interactive dashboard was built in Power BI to answer
+                  questions such as:
                   <br />
-                  I integrated 10-year median house price data (2013–2023) with
-                  development project records and calculated development
-                  intensity per suburb. Using Power BI and DAX, I analysed the
-                  relationship between development activity and price growth,
-                  separating completed projects from those still under
-                  construction to understand whether supply at different stages
-                  has different market impacts. The findings show a moderate
-                  negative correlation: -0.60 for completed projects and -0.52
-                  for under-construction projects.
+                  &bull; Do patients use public or private hospitals more often?
+                  <br />
+                  &bull; What are the most common diagnoses leading to hospital
+                  admission?
+                  <br />
+                  &bull; Which medical procedures occur most frequently?
+                  <br /> &bull; How does hospital utilisation vary across states
+                  and population groups?
                   <br />
                   <br />
-                  This suggests that suburbs with higher development intensity
-                  tended to experience slower long-term price growth, supporting
-                  the idea that increased housing supply may moderate capital
-                  appreciation. However, the development dataset only covered
-                  seven suburbs within the City of Melbourne, resulting in a
-                  small sample size. Therefore, the results should be
-                  interpreted as exploratory insights rather than definitive
-                  conclusions, highlighting the need for broader geographic data
-                  to strengthen the analysis.
+                  The dashboard combines bar charts, stacked comparisons, and
+                  maps to highlight trends in hospital usage and provide a
+                  clearer view of how healthcare services are accessed across
+                  Australia.
                 </p>
               </div>
             </div>
